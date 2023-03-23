@@ -1,6 +1,6 @@
 {
-    "name": "pestphp/pest-plugin-laravel",
-    "description": "The Pest Laravel Plugin",
+    "name": "stevehogo/pest-plugin-lumen",
+    "description": "The Pest Lumen Plugin",
     "keywords": [
         "php",
         "framework",
@@ -8,13 +8,13 @@
         "unit",
         "test",
         "testing",
-        "laravel"
+        "lumen"
     ],
     "license": "MIT",
     "require": {
         "php": "^8.1.0",
         "anik/testbench-lumen": "^1.3",
-        "illuminate/session": "^10.4",
+        "illuminate/session": "^9.0|^10.4",
         "pestphp/pest": "^2.0.0"
     },
     "autoload": {
@@ -32,7 +32,7 @@
     },
     "require-dev": {
         "laravel/dusk": "^7.7.0",
-        "laravel/lumen-framework": "^10.0",
+        "laravel/lumen-framework": "^9.0|^10.4",
         "pestphp/pest-dev-tools": "^2.5.0"
     },
     "minimum-stability": "dev",
