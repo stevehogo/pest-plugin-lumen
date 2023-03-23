@@ -6,8 +6,6 @@
         "framework",
         "pest",
         "unit",
-        "test",
-        "testing",
         "lumen"
     ],
     "license": "MIT",
