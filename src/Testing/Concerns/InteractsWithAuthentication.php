@@ -1,9 +1,36 @@
 <?php
 
 namespace Pest\Lumen\Testing\Concerns;
+use Illuminate\Contracts\Auth\Authenticatable;
+
 trait InteractsWithAuthentication
 {
 
+    /**
+     * Set the currently logged in user for the application.
+     *
+     * @param  Authenticatable  $user
+     * @param  string|null  $guard
+     * @return $this
+     */
+    public function actingAs(Authenticatable $user, $guard = null)
+    {
+        return $this->be($user, $guard);
+    }
+
+    /**
+     * Set the currently logged in user for the application.
+     *
+     * @param  Authenticatable $user
+     * @param  string|null  $guard
+     * @return $this
+     */
+    public function be(Authenticatable $user, $guard = null)
+    {
+        $this->app['auth']->guard($guard)->setUser($user);
+
+        return $this;
+    }
     /**
      * Assert that the user is authenticated.
      *

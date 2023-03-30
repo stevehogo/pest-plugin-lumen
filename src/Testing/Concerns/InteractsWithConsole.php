@@ -71,7 +71,7 @@ trait InteractsWithConsole
      * @param  array  $parameters
      * @return \Illuminate\Testing\PendingCommand|int
      */
-    public function artisan(?string $command = null, $parameters = [])
+    public function artisan($command, $parameters = [])
     {
         if (! $this->mockConsoleOutput) {
             return $this->app[Kernel::class]->call($command, $parameters);

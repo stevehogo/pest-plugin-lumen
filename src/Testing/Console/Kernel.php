@@ -2,7 +2,7 @@
 
 namespace Pest\Lumen\Testing\Console;
 
-use App\Console\Kernel as ConsoleKernel;
+use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 use Illuminate\Console\Application as Artisan;
 use Pest\Lumen\Commands\ClosureCommand;
 

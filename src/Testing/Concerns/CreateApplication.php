@@ -3,7 +3,7 @@
 namespace Pest\Lumen\Testing\Concerns;
 
 use Pest\Lumen\Testing\Console\Kernel as ConsoleKernel;
-use App\Exceptions\Handler;
+use Laravel\Lumen\Exceptions\Handler;
 use Composer\Autoload\ClassLoader;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Contracts\Debug\ExceptionHandler;
@@ -43,7 +43,7 @@ trait CreateApplication
         return [];
     }
 
-    protected function createApplication(): Application
+    public function createApplication(): Application
     {
         $app = $this->resolveApplication();
         $this->loadWithFacade($app);

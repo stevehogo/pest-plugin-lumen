@@ -4,24 +4,24 @@ namespace Pest\Lumen\Testing\Concerns;
 
 trait InteractsWithSession
 {
-    protected function initSession($app) {
-        $app->configure('session');
-        $app->register(\Illuminate\Session\SessionServiceProvider::class);
+    protected function initSession() {
+        $this->app->configure('session');
+        $this->app->register(\Illuminate\Session\SessionServiceProvider::class);
 
         //setup session
-        $app->singleton(\Illuminate\Session\SessionManager::class, function () use ($app) {
-            return $app->loadComponent('session', \Illuminate\Session\SessionServiceProvider::class, 'session');
+        $this->app->singleton(\Illuminate\Session\SessionManager::class, function () {
+            return $this->app->loadComponent('session', \Illuminate\Session\SessionServiceProvider::class, 'session');
         });
 
-        $app->singleton('session.store', function () use ($app) {
-            return $app->loadComponent('session', \Illuminate\Session\SessionServiceProvider::class, 'session.store');
+        $this->app->singleton('session.store', function () {
+            return $this->app->loadComponent('session', \Illuminate\Session\SessionServiceProvider::class, 'session.store');
         });
-        $app->middleware([
+        $this->app->middleware([
             \Illuminate\Session\Middleware\StartSession::class,
         ]);
 
         //session config
-        $app['config']->set('session', [
+        $this->app['config']->set('session', [
             'driver'=>'file',
             'lifetime'=>60,
             'encrypt'=>false,

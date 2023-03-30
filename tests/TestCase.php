@@ -48,10 +48,6 @@ class TestCase extends BaseTestCase
      */
     protected function setUp(): void
     {
-        // register app created event
-        $this->afterApplicationCreated(function ($app){
-            $this->getEnvironmentSetUp($app);
-        });
         parent::setUp();
         $old = $this->mockConsoleOutput;
         $this->mockConsoleOutput = !$old;
@@ -62,16 +58,14 @@ class TestCase extends BaseTestCase
         $this->mockConsoleOutput = $old;
     }
 
-    protected function getEnvironmentSetUp($app): void
-    {
-
-        $app->configure('auth');
-        $app['config']->set('view.paths', [
+    protected function setUpConfigurationVariables(): void{
+        $this->app->configure('auth');
+        $this->app['config']->set('view.paths', [
             __DIR__.'/../resources/views',
         ]);
-        $app['config']->set('app.key', 'base64:Hupx3yAySikrM2/edkZQNQHslgDWYfiBfCuSThJ5SK8=');
-        $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', [
+        $this->app['config']->set('app.key', 'base64:Hupx3yAySikrM2/edkZQNQHslgDWYfiBfCuSThJ5SK8=');
+        $this->app['config']->set('database.default', 'testbench');
+        $this->app['config']->set('database.connections.testbench', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
